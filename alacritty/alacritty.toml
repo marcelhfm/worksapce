@@ -6,13 +6,10 @@ import = [
 TERM = "xterm-256-color"
 
 [window]
-padding.x = 10
-padding.y = 10
+padding.x = 2
+padding.y = 1
 
 decorations = "Buttonless"
-
-opacity = 0.8
-blur = true
 
 [font]
 normal.family = "JetBrainsMono Nerd Font Mono"
