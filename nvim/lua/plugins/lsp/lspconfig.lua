@@ -157,4 +157,9 @@ lspconfig["html"].setup({
 	filetypes = { "html", "templ" },
 })
 
+lspconfig["cmake"].setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
+
 vim.filetype.add({ extension = { templ = "templ" } })
