@@ -162,4 +162,9 @@ lspconfig["cmake"].setup({
 	capabilities = capabilities,
 })
 
+lspconfig["pylyzer"].setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
+
 vim.filetype.add({ extension = { templ = "templ" } })

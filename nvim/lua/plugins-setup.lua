@@ -110,6 +110,9 @@ return packer.startup(function(use)
 	use("romgrk/barbar.nvim")
 	use("lewis6991/gitsigns.nvim")
 
+	-- jupyter
+	use({ "dccsillag/magma-nvim", run = ":UpdateRemotePlugins" })
+
 	if packer_bootstrap then
 		require("packer").sync()
 	end
