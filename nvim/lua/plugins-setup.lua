@@ -13,7 +13,7 @@ local packer_bootstrap = ensure_packer() -- true if packer was just installed
 
 -- autocommand that reloads neovim and installs/updates/removes plugins
 -- when file is saved
-vim.cmd([[ 
+vim.cmd([[
   augroup packer_user_config
     autocmd!
     autocmd BufWritePost plugins-setup.lua source <afile> | PackerSync
@@ -108,11 +108,35 @@ return packer.startup(function(use)
 
 	-- tabs
 	use("romgrk/barbar.nvim")
-	use("lewis6991/gitsigns.nvim")
 
-	-- jupyter
-	use({ "dccsillag/magma-nvim", run = ":UpdateRemotePlugins" })
+	-- python stuff
+	use("psf/black")
 
+	use({
+		"benlubas/molten-nvim",
+		tag = "v1.*",
+		requires = { "3rd/image.nvim" },
+		run = ":UpdateRemotePlugins",
+		config = function()
+			vim.g.molten_image_provider = "image.nvim"
+			vim.g.molten_output_win_max_height = 20
+		end,
+	})
+
+	use({
+		"3rd/image.nvim",
+		config = function()
+			require("image").setup({
+				backend = "kitty", -- whatever backend you would like to use
+				max_width = 100,
+				max_height = 12,
+				max_height_window_percentage = math.huge,
+				max_width_window_percentage = math.huge,
+				window_overlap_clear_enabled = true, -- toggles images when windows are overlapped
+				window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "" },
+			})
+		end,
+	})
 	if packer_bootstrap then
 		require("packer").sync()
 	end

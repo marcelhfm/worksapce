@@ -162,7 +162,7 @@ lspconfig["cmake"].setup({
 	capabilities = capabilities,
 })
 
-lspconfig["pylyzer"].setup({
+lspconfig["pyright"].setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 })

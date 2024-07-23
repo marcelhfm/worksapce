@@ -15,4 +15,7 @@ require("plugins.autopairs")
 require("plugins.treesitter")
 require("plugins.gitsigns")
 require("plugins.tabs")
-require("plugins.magma")
+require("plugins.molten")
+-- require("plugins.image-setup")
+
+vim.g.python3_host_prog = vim.fn.expand("~/.virtualenvs/neovim/bin/python3")

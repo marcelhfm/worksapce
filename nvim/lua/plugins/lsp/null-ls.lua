@@ -32,6 +32,10 @@ null_ls.setup({
 				return utils.root_has_file(".eslintrc.js") -- change file extension if you use something else
 			end,
 		}),
+
+		-- python stuff
+		null_ls.builtins.formatting.black,
+		null_ls.builtins.diagnostics.flake8,
 	},
 	-- configure format on save
 	on_attach = function(current_client, bufnr)
@@ -42,10 +46,6 @@ null_ls.setup({
 				buffer = bufnr,
 				callback = function()
 					vim.lsp.buf.format({
-						filter = function(client)
-							--  only use null-ls for formatting instead of lsp server
-							return client.name == "null-ls"
-						end,
 						bufnr = bufnr,
 					})
 				end,
@@ -53,3 +53,11 @@ null_ls.setup({
 		end
 	end,
 })
+
+-- format on safe
+vim.cmd([[
+  augroup FormatAutogroup
+    autocmd!
+    autocmd BufWritePost *.py lua vim.lsp.buf.formatting_sync()
+  augroup END
+]])

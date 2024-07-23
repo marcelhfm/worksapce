@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/Users/marcelhofmann/.cache/nvim/packer_hererocks/2.1.1716656478/share/lua/5.1/?.lua;/Users/marcelhofmann/.cache/nvim/packer_hererocks/2.1.1716656478/share/lua/5.1/?/init.lua;/Users/marcelhofmann/.cache/nvim/packer_hererocks/2.1.1716656478/lib/luarocks/rocks-5.1/?.lua;/Users/marcelhofmann/.cache/nvim/packer_hererocks/2.1.1716656478/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/Users/marcelhofmann/.cache/nvim/packer_hererocks/2.1.1716656478/lib/lua/5.1/?.so"
+local package_path_str = "/Users/marcelhofmann/.cache/nvim/packer_hererocks/2.1.1720049189/share/lua/5.1/?.lua;/Users/marcelhofmann/.cache/nvim/packer_hererocks/2.1.1720049189/share/lua/5.1/?/init.lua;/Users/marcelhofmann/.cache/nvim/packer_hererocks/2.1.1720049189/lib/luarocks/rocks-5.1/?.lua;/Users/marcelhofmann/.cache/nvim/packer_hererocks/2.1.1720049189/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/Users/marcelhofmann/.cache/nvim/packer_hererocks/2.1.1720049189/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -89,6 +89,11 @@ _G.packer_plugins = {
     path = "/Users/marcelhofmann/.local/share/nvim/site/pack/packer/start/barbar.nvim",
     url = "https://github.com/romgrk/barbar.nvim"
   },
+  black = {
+    loaded = true,
+    path = "/Users/marcelhofmann/.local/share/nvim/site/pack/packer/start/black",
+    url = "https://github.com/psf/black"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/Users/marcelhofmann/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -119,6 +124,12 @@ _G.packer_plugins = {
     path = "/Users/marcelhofmann/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
+  ["image.nvim"] = {
+    config = { "\27LJ\2\nó\2\0\0\4\0\n\0\0156\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0006\3\4\0009\3\5\3=\3\6\0026\3\4\0009\3\5\3=\3\a\0025\3\b\0=\3\t\2B\0\2\1K\0\1\0#window_overlap_clear_ft_ignore\1\4\0\0\rcmp_menu\rcmp_docs\5 max_width_window_percentage!max_height_window_percentage\thuge\tmath\1\0\a!window_overlap_clear_enabled\2 max_width_window_percentage\0!max_height_window_percentage\0\15max_height\3\f\fbackend\nkitty#window_overlap_clear_ft_ignore\0\14max_width\3d\nsetup\nimage\frequire\0" },
+    loaded = true,
+    path = "/Users/marcelhofmann/.local/share/nvim/site/pack/packer/start/image.nvim",
+    url = "https://github.com/3rd/image.nvim"
+  },
   ["lspkind.nvim"] = {
     loaded = true,
     path = "/Users/marcelhofmann/.local/share/nvim/site/pack/packer/start/lspkind.nvim",
@@ -134,11 +145,6 @@ _G.packer_plugins = {
     path = "/Users/marcelhofmann/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
-  ["magma-nvim"] = {
-    loaded = true,
-    path = "/Users/marcelhofmann/.local/share/nvim/site/pack/packer/start/magma-nvim",
-    url = "https://github.com/dccsillag/magma-nvim"
-  },
   ["mason-lspconfig.nvim"] = {
     loaded = true,
     path = "/Users/marcelhofmann/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
@@ -153,6 +159,12 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/marcelhofmann/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
+  },
+  ["molten-nvim"] = {
+    config = { "\27LJ\2\no\0\0\2\0\5\0\t6\0\0\0009\0\1\0'\1\3\0=\1\2\0006\0\0\0009\0\1\0)\1\20\0=\1\4\0K\0\1\0!molten_output_win_max_height\15image.nvim\26molten_image_provider\6g\bvim\0" },
+    loaded = true,
+    path = "/Users/marcelhofmann/.local/share/nvim/site/pack/packer/start/molten-nvim",
+    url = "https://github.com/benlubas/molten-nvim"
   },
   ["null-ls.nvim"] = {
     loaded = true,
@@ -249,6 +261,14 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: image.nvim
+time([[Config for image.nvim]], true)
+try_loadstring("\27LJ\2\nó\2\0\0\4\0\n\0\0156\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0006\3\4\0009\3\5\3=\3\6\0026\3\4\0009\3\5\3=\3\a\0025\3\b\0=\3\t\2B\0\2\1K\0\1\0#window_overlap_clear_ft_ignore\1\4\0\0\rcmp_menu\rcmp_docs\5 max_width_window_percentage!max_height_window_percentage\thuge\tmath\1\0\a!window_overlap_clear_enabled\2 max_width_window_percentage\0!max_height_window_percentage\0\15max_height\3\f\fbackend\nkitty#window_overlap_clear_ft_ignore\0\14max_width\3d\nsetup\nimage\frequire\0", "config", "image.nvim")
+time([[Config for image.nvim]], false)
+-- Config for: molten-nvim
+time([[Config for molten-nvim]], true)
+try_loadstring("\27LJ\2\no\0\0\2\0\5\0\t6\0\0\0009\0\1\0'\1\3\0=\1\2\0006\0\0\0009\0\1\0)\1\20\0=\1\4\0K\0\1\0!molten_output_win_max_height\15image.nvim\26molten_image_provider\6g\bvim\0", "config", "molten-nvim")
+time([[Config for molten-nvim]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-treesitter ]]
