@@ -3,5 +3,8 @@
 	url = https://github.com/tmux-plugins/tmux-continuum.git
 [submodule "alacritty/themes"]
 	path = alacritty/themes
-  url = https://github.com/alacritty/alacritty-theme
-  ignore = dirty
+ 	url = https://github.com/alacritty/alacritty-theme
+  	ignore = dirty
+[submodule "tmux/plugins/tmux-kanagawa"]
+	path = tmux/plugins/tmux-kanagawa
+	url = https://github.com/Nybkox/tmux-kanagawa

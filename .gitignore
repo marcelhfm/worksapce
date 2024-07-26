@@ -1,0 +1,7 @@
+/*
+/*/
+!/tmux/
+!/nvim/
+!/alacritty/
+!.gitignore
+zed
