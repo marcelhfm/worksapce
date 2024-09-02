@@ -1,4 +1,20 @@
 vim.opt.swapfile = false
+-- Remap < and > to keep visual selection after indenting
+vim.keymap.set('v', '<', '<gv', { desc = 'Indent left and keep selection' })
+vim.keymap.set('v', '>', '>gv', { desc = 'Indent right and keep selection' })
+
+-- indentation
+-- Use spaces instead of tabs
+vim.opt.expandtab = true
+
+-- Set the number of spaces that a <Tab> counts for
+vim.opt.tabstop = 2
+
+-- Set the number of spaces that a <Tab> counts for while editing
+vim.opt.softtabstop = 2
+
+-- Set the number of spaces to use for each step of (auto)indent
+vim.opt.shiftwidth = 2
 
 -- nvim tree
 vim.g.loaded_netrw = 1
@@ -66,7 +82,7 @@ vim.opt.splitbelow = true
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
 --  and `:help 'listchars'`
-vim.opt.list = true
+vim.opt.list = false
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- Preview substitutions live, as you type!
@@ -434,7 +450,47 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
-        tsserver = {},
+        tsserver = {
+          enabled = false,
+        },
+        vtsls = {
+          -- explicitly add default filetypes, so that we can extend
+          -- them in related extras
+          filetypes = {
+            'javascript',
+            'javascriptreact',
+            'javascript.jsx',
+            'typescript',
+            'typescriptreact',
+            'typescript.tsx',
+          },
+          settings = {
+            complete_function_calls = true,
+            vtsls = {
+              enableMoveToFileCodeAction = true,
+              autoUseWorkspaceTsdk = true,
+              experimental = {
+                completion = {
+                  enableServerSideFuzzyMatch = true,
+                },
+              },
+            },
+            typescript = {
+              updateImportsOnFileMove = { enabled = 'always' },
+              suggest = {
+                completeFunctionCalls = true,
+              },
+              inlayHints = {
+                enumMemberValues = { enabled = true },
+                functionLikeReturnTypes = { enabled = true },
+                parameterNames = { enabled = 'literals' },
+                parameterTypes = { enabled = true },
+                propertyDeclarationTypes = { enabled = true },
+                variableTypes = { enabled = false },
+              },
+            },
+          },
+        },
 
         lua_ls = {
           -- cmd = {...},
