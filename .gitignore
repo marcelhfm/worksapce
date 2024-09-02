@@ -5,3 +5,4 @@
 !/alacritty/
 !.gitignore
 zed
+tmux/plugin/**
