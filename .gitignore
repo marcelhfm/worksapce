@@ -5,4 +5,5 @@
 !/alacritty/
 !.gitignore
 zed
+raycast
 tmux/plugin/**
