@@ -157,20 +157,6 @@ if not vim.uv.fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
--- jupytext stuff
-vim.g.jupytext_fmt = 'py'
-vim.g.jupytext_style = 'percent'
-
-vim.api.nvim_create_autocmd('BufRead', {
-  pattern = '*.ipynb',
-  command = 'set filetype=jupyter',
-})
-
-vim.api.nvim_create_autocmd('BufWritePost', {
-  pattern = '*.ipynb',
-  command = 'silent !jupytext --to notebook %',
-})
-
 -- [[ Configure and install plugins ]]
 --
 --  To check the current status of your plugins, run
@@ -440,7 +426,43 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        clangd = {},
+        clangd = {
+          keys = {
+            { '<leader>ch', '<cmd>ClangdSwitchSourceHeader<cr>', desc = 'Switch Source/Header (C/C++)' },
+          },
+          root_dir = function(fname)
+            return require('lspconfig.util').root_pattern(
+              'Makefile',
+              'configure.ac',
+              'configure.in',
+              'config.h.in',
+              'meson.build',
+              'meson_options.txt',
+              'build.ninja'
+            )(fname) or require('lspconfig.util').root_pattern('compile_commands.json', 'compile_flags.txt')(fname) or require('lspconfig.util').find_git_ancestor(
+              fname
+            )
+          end,
+          capabilities = {
+            offsetEncoding = { 'utf-16' },
+          },
+          cmd = {
+            'clangd',
+            '--background-index',
+            '--clang-tidy',
+            '--header-insertion=iwyu',
+            '--completion-style=detailed',
+            '--function-arg-placeholders',
+            '--fallback-style=llvm',
+            '--compile-commands-dir=.',
+            '--compile-commands-dir=./build',
+          },
+          init_options = {
+            usePlaceholders = true,
+            completeUnimported = true,
+            clangdFileStatus = true,
+          },
+        },
         gopls = {},
         pyright = {},
         jsonls = {},
@@ -451,6 +473,8 @@ require('lazy').setup({
             workingDirectories = { mode = 'auto' },
           },
         },
+
+        marksman = {},
 
         vtsls = {
           -- explicitly add default filetypes, so that we can extend
