@@ -1,3 +1,7 @@
+-- shortcut jk to exit insert mode
+vim.api.nvim_set_keymap('i', 'jk', '<ESC>', { noremap = true, silent = true })
+
+-- disable swapfiles
 vim.opt.swapfile = false
 -- Remap < and > to keep visual selection after indenting
 vim.keymap.set('v', '<', '<gv', { desc = 'Indent left and keep selection' })
@@ -426,6 +430,8 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
+        rust_analyzer = {},
+
         clangd = {
           keys = {
             { '<leader>ch', '<cmd>ClangdSwitchSourceHeader<cr>', desc = 'Switch Source/Header (C/C++)' },
