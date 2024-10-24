@@ -444,6 +444,7 @@ require('lazy').setup({
         gopls = {},
         pyright = {},
         jsonls = {},
+        helm_ls = {},
 
         eslint = {
           settings = {
