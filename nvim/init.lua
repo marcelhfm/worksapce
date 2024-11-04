@@ -1,10 +1,7 @@
 -- shortcut jk to exit insert mode
 vim.api.nvim_set_keymap('i', 'jk', '<ESC>', { noremap = true, silent = true })
 
--- disable swapfiles
-vim.opt.swapfile = false
--- Remap < and > to keep visual selection after indenting
-vim.keymap.set('v', '<', '<gv', { desc = 'Indent left and keep selection' })
+-- disable swapfiles vim.opt.swapfile = false Remap < and > to keep visual selection after indenting vim.keymap.set('v', '<', '<gv', { desc = 'Indent left and keep selection' })
 vim.keymap.set('v', '>', '>gv', { desc = 'Indent right and keep selection' })
 
 -- indentation
@@ -621,7 +618,8 @@ require('lazy').setup({
         -- Disable "format_on_save lsp_fallback" for languages that don't
         -- have a well standardized coding style. You can add additional
         -- languages here or re-enable it for the disabled ones.
-        local disable_filetypes = { c = true, cpp = true }
+        -- local disable_filetypes = { c = true, cpp = true }
+        local disable_filetypes = {}
         return {
           timeout_ms = 500,
           lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
