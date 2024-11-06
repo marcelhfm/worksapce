@@ -1,0 +1,9 @@
+/*
+/*/
+!/tmux/
+!/nvim/
+!/alacritty/
+!.gitignore
+zed
+raycast
+tmux/plugin/**
