@@ -1,6 +1,10 @@
+-- typst default pdf viewer
+vim.g.typst_pdf_viewer = 'skim'
+
 -- shortcut jk to exit insert mode
 vim.api.nvim_set_keymap('i', 'jk', '<ESC>', { noremap = true, silent = true })
 
+vim.opt.spell = true
 -- disable swapfiles vim.opt.swapfile = false Remap < and > to keep visual selection after indenting vim.keymap.set('v', '<', '<gv', { desc = 'Indent left and keep selection' })
 vim.keymap.set('v', '>', '>gv', { desc = 'Indent right and keep selection' })
 
@@ -129,8 +133,11 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+-- file explorer
 -- nvim tree
-vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', { desc = 'Toggle nvim tree' })
+-- vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', { desc = 'Toggle nvim tree' })
+-- mini files
+vim.keymap.set('n', '<leader>e', ':lua MiniFiles.open()<CR>', { desc = 'Toggle nvim tree' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -479,6 +486,7 @@ require('lazy').setup({
         },
 
         marksman = {},
+        tinymist = {},
 
         vtsls = {
           -- explicitly add default filetypes, so that we can extend
@@ -786,6 +794,9 @@ require('lazy').setup({
       -- - sr)'  - [S]urround [R]eplace [)] [']
       require('mini.surround').setup()
 
+      --
+      require('mini.files').setup()
+
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
       --  and try some other statusline plugin
@@ -810,6 +821,12 @@ require('lazy').setup({
     'MeanderingProgrammer/render-markdown.nvim',
     dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
     opts = {},
+  },
+
+  {
+    'kaarmu/typst.vim',
+    ft = 'typst',
+    lazy = false,
   },
 
   { -- Highlight, edit, and navigate code
