@@ -1,8 +1,7 @@
 [submodule "tmux/plugins/tmux-continuum"]
 	path = tmux/plugins/tmux-continuum
-	url = https://github.com/tmux-plugins/tmux-continuum.git
-[submodule "alacritty/themes"]
-	path = alacritty/themes
- 	url = https://github.com/alacritty/alacritty-theme
-  	ignore = dirty
+  url = https://github.com/tmux-plugins/tmux-continuum.git
 
+[submodule "tmux/plugins/minimal-tmux-status"]
+	path = tmux/plugins/minimal-tmux-status
+	url = git@github.com:niksingh710/minimal-tmux-status.git
